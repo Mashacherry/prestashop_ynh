@@ -88,11 +88,11 @@ ynh_add_nginx_config
 # PHP-FPM CONFIGURATION
 #=================================================
 
-# ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
+ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
 
-# # Create a dedicated PHP-FPM config
-# ynh_add_fpm_config --usage=low --footprint=low
-# phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
+# Create a dedicated PHP-FPM config
+ynh_add_fpm_config --package="$extra_php_dependencies"
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -138,7 +138,7 @@ php7.0 index_cli.php \
 		--prefix=_ps_
 popd
 
-sudo rm -rf $final_path/install
+sudo rm -rf $final_path/install $final_path/prestashop.zip $final_path/Install_PrestaShop.html $final_path/Install.txt
 
 #=================================================
 # check les permissions
