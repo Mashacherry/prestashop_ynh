@@ -92,16 +92,6 @@ ynh_app_setting_set $app final_path $final_path
 mkdir -p $final_path
 
 #=================================================
-# PHP-FPM CONFIGURATION
-#=================================================
-ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
-
-# Create a dedicated php-fpm config
-ynh_add_fpm_config --usage=medium --footprint=high --phpversion=$YNH_PHP_VERSION 
-# Used by ynh_add_nginx_config
-phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 # Download, check integrity, uncompress and patch the source from app.src
@@ -114,6 +104,16 @@ unzip -quo $final_path/prestashop.zip -d /var/www/prestashop
 
 # Create a system user
 ynh_system_user_create $app
+
+#=================================================
+# PHP-FPM CONFIGURATION
+#=================================================
+ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
+
+# Create a dedicated php-fpm config
+ynh_add_fpm_config --usage=medium --footprint=high --phpversion=$YNH_PHP_VERSION 
+# Used by ynh_add_nginx_config
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # Installation de Prestashop
