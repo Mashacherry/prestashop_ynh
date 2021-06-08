@@ -167,11 +167,9 @@ echo -e "127.0.0.1 $domain #PRESTASHOP" | sudo tee -a /etc/hosts
 # SETUP SSOWAT
 #=================================================
 
-# Make app public if necessary
 if [ $is_public -eq 1 ]
 then
-	# unprotected_uris allows SSO credentials to be passed anyway.
-	ynh_app_setting_set $app unprotected_uris "/"
+    ynh_permission_update --permission="main" --add="visitors"
 fi
 
 #=================================================
