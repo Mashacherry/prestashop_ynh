@@ -89,7 +89,7 @@
             },
             {
                 "name": "email",
-                "type": "email",
+                "type": "string",
                 "ask": {
                     "en": "Your mail address.",
                     "fr": "Votre adresse mail.",
