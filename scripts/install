@@ -29,7 +29,6 @@ path=$YNH_APP_ARG_PATH
 admin_prestashop=$YNH_APP_ARG_ADMIN
 language=$YNH_APP_ARG_LANGUAGE
 is_public=$YNH_APP_ARG_IS_PUBLIC
-path_url=$YNH_APP_ARG_PATH
 pass=$YNH_APP_ARG_PASSWD
 email=$YNH_APP_ARG_EMAIL
 
@@ -43,7 +42,7 @@ final_path=/var/www/$app
 test ! -e "$final_path" || ynh_die "This path already contains a folder"
 
 # Normalize the url path syntax
-path_url=$(ynh_normalize_url_path $path_url)
+path_url=$(ynh_normalize_url_path $path)
 
 # Register (book) web path
 ynh_webpath_register $app $domain $path_url
@@ -88,7 +87,11 @@ ynh_add_nginx_config
 # PHP-FPM CONFIGURATION
 #=================================================
 
-POOL_FPM
+ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
+
+# Create a dedicated PHP-FPM config
+ynh_add_fpm_config --usage=low --footprint=low
+phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
