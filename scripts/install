@@ -103,7 +103,7 @@ unzip -quo $final_path/prestashop.zip -d /var/www/prestashop
 #=================================================
 
 # Create a system user
-ynh_system_user_create $app
+ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
 # PHP-FPM CONFIGURATION
@@ -111,7 +111,7 @@ ynh_system_user_create $app
 ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
 
 # Create a dedicated php-fpm config
-ynh_add_fpm_config --usage=medium --footprint=high --phpversion=$YNH_PHP_VERSION 
+ynh_add_fpm_config --usage=low --footprint=low --phpversion=$YNH_PHP_VERSION 
 # Used by ynh_add_nginx_config
 phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
@@ -148,7 +148,13 @@ sudo rm -rf $final_path/install $final_path/prestashop.zip $final_path/Install_P
 # check les permissions
 #=================================================
 
-sudo chown -R $app:$app $final_path
+chown -R $app:www-data "$final_path"
+# Home directory of the user needs to be owned by root to allow
+# SFTP connections
+chown root:root "$final_path"
+setfacl -m g:$app:r-x "$final_path"
+setfacl -m g:www-data:r-x "$final_path"
+chmod o-rwx "$final_path"
 
 #=================================================
 # active ssl
@@ -176,10 +182,18 @@ fi
 # RELOAD NGINX
 #=================================================
 
-systemctl reload nginx
+ynh_script_progression --message="Reloading NGINX web server..."
+
+ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # Nettoyer hosts
 #=================================================
 
 sudo sed -i '/#PRESTASHOP/d' /etc/hosts
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Installation of $app completed" --last
