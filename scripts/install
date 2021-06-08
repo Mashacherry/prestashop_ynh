@@ -34,6 +34,7 @@ admin_email=$YNH_APP_ARG_ADMIN_EMAIL
 email=$admin_email
 
 app=$YNH_APP_INSTANCE_NAME
+YNH_PHP_VERSION="7.3"
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
@@ -90,8 +91,9 @@ ynh_add_nginx_config
 
 ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
 
-# Create a dedicatedPHP-FPM config
-ynh_add_fpm_config --usage=low --footprint=low
+# Create a dedicated php-fpm config
+ynh_add_fpm_config --usage=medium --footprint=high --phpversion=$YNH_PHP_VERSION 
+# Used by ynh_add_nginx_config
 phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 
 #=================================================
