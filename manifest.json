@@ -4,20 +4,25 @@
     "packaging_format": 1,
     "description": {
         "en": "Create a E-commerce Website",
-        "fr": "Créer un site ecommerce"
+        "fr": "Créer un site ecommerce",
+        "ru": "Создание Онлайн магазина"
     },
-    "version": "1.0.3",
+    "version": "1.0.4",
     "url": "https://www.prestashop.com/",
     "license": "free",
     "maintainer": {
-        "name": "frju365",
-        "email": "abld@abld.info"
+        "name": "Mashacherry",
+        "email": "rozetkin1060123@gmail.com"
     },
     "previous_maintainers": [
       {
         "name": "cyp",
         "email": "cyp@rouquin.me",
         "url": ""
+      },
+      {
+        "name": "frju365",
+        "email": "abld@abld.info"
       }
     ],
     "requirements": {
@@ -36,7 +41,8 @@
                 "type": "domain",
                 "ask": {
                     "en": "Choose a domain name for Prestashop",
-                    "fr": "Choisissez un nom de domaine pour Prestashop"
+                    "fr": "Choisissez un nom de domaine pour Prestashop",
+                    "ru": "Выберите домен для Prestashop"
                 },
                 "example": "example.org"
             },
@@ -45,7 +51,8 @@
                 "type": "path",
                 "ask": {
                     "en": "Choose a path for Prestashop",
-                    "fr": "Choisissez un chemin pour Prestashop"
+                    "fr": "Choisissez un chemin pour Prestashop",
+                    "ru": "Выберите путь для Prestashop"
                 },
                 "example": "/prestashop",
                 "default": "/prestashop"
@@ -55,7 +62,8 @@
                 "type": "user",
                 "ask": {
                     "en": "Choose the Prestashop administrator (must be an existing YunoHost user)",
-                    "fr": "Administrateur du site (doit être un utilisateur YunoHost existant)"
+                    "fr": "Administrateur du site (doit être un utilisateur YunoHost existant)",
+                    "ru": "Выберите администратора для Prestashop (должен быть уже существующим пользователем YunoHost)"
                 },
                 "example": "johndoe"
             },
@@ -64,7 +72,8 @@
                 "type": "boolean",
                 "ask": {
                     "en": "Is it a public application?",
-                    "fr": "Est-ce une application publique ?"
+                    "fr": "Est-ce une application publique ?",
+                    "ru": "Это приложение должно быть публичным?"
                 },
                 "default": true
             },
@@ -73,7 +82,8 @@
                 "type": "password",
                 "ask": {
                     "en": "Set the password for the Admin user ≥ 5 character",
-                    "fr": "Définissez le mot de passe pour l'Administrateur. ≥ cinq charactères"
+                    "fr": "Définissez le mot de passe pour l'Administrateur. ≥ cinq charactères",
+                    "ru": "Установите пароль Администратора ≥ 5 символов"
                 },
                 "example": "myreallystrengthpassword"
             },
@@ -82,9 +92,10 @@
                 "type": "email",
                 "ask": {
                     "en": "Your mail address.",
-                    "fr": "Votre adresse mail."
+                    "fr": "Votre adresse mail.",
+                    "ru": "Ваш email адрес."
                 },
-                "exemple": "abc@efg.hi"
+                "example": "admin@example.com"
             }
         ]
     }
