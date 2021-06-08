@@ -99,7 +99,7 @@
                 "example": "myreallystrengthpassword"
             },
             {
-                "name": "email",
+                "name": "admin_email",
                 "type": "string",
                 "ask": {
                     "en": "Your mail address.",
