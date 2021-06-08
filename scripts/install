@@ -30,7 +30,8 @@ admin_prestashop=$YNH_APP_ARG_ADMIN
 language=$YNH_APP_ARG_LANGUAGE
 is_public=$YNH_APP_ARG_IS_PUBLIC
 pass=$YNH_APP_ARG_PASSWD
-email=$YNH_APP_ARG_USER_EMAIL
+admin_email=$YNH_APP_ARG_ADMIN_EMAIL
+email=$admin_email
 
 app=$YNH_APP_INSTANCE_NAME
 
@@ -130,7 +131,7 @@ php7.0 index_cli.php \
 		--lastname=$admin_prestashop \
 		--firstname=$admin_prestashop \
 		--password=$pass \
-		--email=$email \
+		--email=$admin_email \
 		--domain=$domain \
 		--base_uri=$path \
 		--prefix=_ps_
