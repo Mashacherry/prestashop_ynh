@@ -86,9 +86,14 @@ ynh_mysql_setup_db $db_name $db_name
 ynh_add_nginx_config
 
 #=================================================
+# ADDITIONAL SETUP
+#=================================================
+ynh_app_setting_set $app final_path $final_path
+mkdir -p $final_path
+
+#=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
-
 ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
 
 # Create a dedicated php-fpm config
@@ -99,9 +104,6 @@ phpversion=$(ynh_app_setting_get --app=$app --key=phpversion)
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-
-ynh_app_setting_set $app final_path $final_path
-mkdir -p $final_path
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source "$final_path"
 unzip -quo $final_path/prestashop.zip -d /var/www/prestashop
