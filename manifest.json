@@ -58,6 +58,17 @@
                 "default": "/prestashop"
             },
             {
+                "name": "language",
+                "type": "string",
+                "ask": {
+                    "en": "Choose the application language",
+                    "fr": "Choisissez la langue de l'application",
+                    "ru": "Выберите язык для приложения"
+                },
+                "choices": ["fr_FR", "en_EN", "de_DE", "ru_RU"],
+                "default": "en_EN"
+            },
+            {
                 "name": "admin",
                 "type": "user",
                 "ask": {
