@@ -101,6 +101,7 @@ ynh_app_setting_set $app final_path $final_path
 mkdir -p $final_path
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source "$final_path"
+unzip -quo $final_path/prestashop.zip -d /var/www/prestashop
 
 #=================================================
 # CREATE DEDICATED USER
