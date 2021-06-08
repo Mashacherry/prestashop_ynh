@@ -106,6 +106,18 @@ unzip -quo $final_path/prestashop.zip -d /var/www/prestashop
 ynh_system_user_create --username=$app --home_dir="$final_path"
 
 #=================================================
+# check les permissions
+#=================================================
+
+chown -R $app:www-data "$final_path"
+# Home directory of the user needs to be owned by root to allow
+# SFTP connections
+chown root:root "$final_path"
+setfacl -m g:$app:r-x "$final_path"
+setfacl -m g:www-data:r-x "$final_path"
+chmod o-rwx "$final_path"
+
+#=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
 ynh_script_progression --message="Configuring PHP-FPM..." --weight=2
@@ -190,7 +202,7 @@ ynh_systemd_action --service_name=nginx --action=reload
 # Nettoyer hosts
 #=================================================
 
-sudo sed -i '/#PRESTASHOP/d' /etc/hosts
+#sudo sed -i '/#PRESTASHOP/d' /etc/hosts
 
 #=================================================
 # END OF SCRIPT
