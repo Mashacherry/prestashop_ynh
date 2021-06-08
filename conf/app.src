@@ -2,5 +2,5 @@ SOURCE_URL=https://download.prestashop.com/download/releases/prestashop_1.7.7.4.
 SOURCE_SUM=7017aebcb218d916c90c323e3da9a56e83c8293de598694b773433674d688dde
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
-SOURCE_IN_SUBDIR=true
+SOURCE_IN_SUBDIR=false
 SOURCE_FILENAME=
