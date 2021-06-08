@@ -118,6 +118,7 @@ ynh_system_user_create $app
 #fix for db_name
 sed -i "s/VARCHAR(64)/VARCHAR(512)/" $final_path/install/upgrade/sql/1.6.0.3.sql
 sed -i "s/\x27name\x27 => array(\x27type\x27 => self::TYPE_STRING, \x27lang\x27 => true, \x27required\x27 => true, \x27validate\x27 => \x27isTabName\x27, \x27size\x27 => 64),/\x27name\x27 => array(\x27type\x27 => self::TYPE_STRING, \x27lang\x27 => true, \x27required\x27 => true, \x27validate\x27 => \x27isTabName\x27, \x27size\x27 => 512),/" $final_path/classes/Tab.php
+sed -i "s/\x27name\x27 => \[\x27type\x27 => self::TYPE_STRING, \x27lang\x27 => true, \x27required\x27 => true, \x27validate\x27 => \x27isTabName\x27, \x27size\x27 => 64\],/\x27name\x27 => \[\x27type\x27 => self::TYPE_STRING, \x27lang\x27 => true, \x27required\x27 => true, \x27validate\x27 => \x27isTabName\x27, \x27size\x27 => 512\],/" $final_path/classes/Tab.php
 
 pushd $final_path/install/
 php7.0 index_cli.php \
