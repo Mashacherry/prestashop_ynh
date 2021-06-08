@@ -29,6 +29,7 @@ path=$YNH_APP_ARG_PATH
 admin_prestashop=$YNH_APP_ARG_ADMIN
 language=$YNH_APP_ARG_LANGUAGE
 is_public=$YNH_APP_ARG_IS_PUBLIC
+path_url=$YNH_APP_ARG_PATH
 pass=$YNH_APP_ARG_PASSWD
 email=$YNH_APP_ARG_EMAIL
 
