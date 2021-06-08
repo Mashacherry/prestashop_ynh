@@ -61,15 +61,6 @@
             },
             {
                 "name": "is_public",
-                "ask": {
-                    "en": "Is it a public Prestashop site ?",
-                    "fr": "Est-ce un site public ?"
-                },
-                "choices": ["Yes", "No"],
-                "default": "Yes"
-            },
-            {
-                "name": "is_public",
                 "type": "boolean",
                 "ask": {
                     "en": "Is it a public application?",
